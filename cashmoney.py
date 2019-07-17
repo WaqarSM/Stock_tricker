@@ -7,6 +7,11 @@ from termcolor import colored
 import sched, time
 import os
 
+
+
+
+
+
 #-------------------------------------------------------------------------------
 def CurrentValue(TickerSym, printval):
     try:
@@ -73,6 +78,16 @@ def timed_beat(sc):
     s.enter(30, 1, timed_beat, (sc,))
 
 #-------------------------------------------------------------------------------
+try:
+    from pip._internal.operations import freeze
+except ImportError:  # pip < 10.0
+    from pip.operations import freeze
+
+x = freeze.freeze()
+for p in x:
+    print (p)
+
+
 
 total_cash_money_in_da_bank=0
 # $SHOP
@@ -92,11 +107,11 @@ numstock_GLDN=100
 
 tickout("BU",principal_GLDN,numstock_GLDN)
 
-    if (total_cash_money_in_da_bank>0):
-        print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
-    else:
-        print(colored("😭 Banking: $ %f" % total_cash_money_in_da_bank,'red'))
-    print("-----------------------------")
+if (total_cash_money_in_da_bank>0):
+    print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
+else:
+    print(colored("😭 Banking: $ %f" % total_cash_money_in_da_bank,'red'))
+print("-----------------------------")
 
 #-----------------------Looper------------------------------
 s = sched.scheduler(time.time, time.sleep)

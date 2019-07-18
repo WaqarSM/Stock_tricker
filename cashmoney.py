@@ -58,15 +58,16 @@ def timed_beat(sc):
     # principal_net_shop=numstock_shop*principal_shop
 #--
     # $GLDN.v
-    principal_GLDN=0.135 #DO NOT OWN YET
+    principal_GLDN=0.135
     numstock_GLDN=7600
     tickout("GLDN",principal_GLDN,numstock_GLDN)
-    HitPrice("GLDN",0.160,"sell") #Order in
+    HitPrice("GLDN",0.160,"sell")
 
     # $BU.TO
     principal_GLDN=1.09 #Saddly own.
     numstock_GLDN=100
     tickout("BU",principal_GLDN,numstock_GLDN)
+    HitPrice("BU",1.200,"sell") #Order in
 
 
     if (total_cash_money_in_da_bank>0):

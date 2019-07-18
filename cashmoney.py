@@ -36,18 +36,16 @@ def tickout(TickerSym,principal,numstock):
         print (colored("⬇ "+TickerSym+": $ "+str(current_net) , 'red'))
 
 def HitPrice(TickerSym, price_wanted, buysell):
-    if(CurrentValue(TickerSym, False)<=price_wanted):
+    if((CurrentValue(TickerSym, False)<=price_wanted) and buysell=="buy"):
         beep = lambda x: os.system("echo \$ '\a';sleep 0.05;" * x)
         beep(15)
-        if (buysell=="buy"):
-            os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or less")
-            print(TickerSym + " is currently selling at " + str(price_wanted) + " or less")
-    else:
+        os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or less")
+        print(TickerSym + " is currently selling at " + str(price_wanted) + " or less")
+    if((CurrentValue(TickerSym, False)>=price_wanted) and buysell=="sell"):
         beep = lambda x: os.system("echo \$ '\a';sleep 0.05;" * x)
         beep(15)
-        if (buysell=="sell"):
-            os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or more")
-            print(TickerSym + " is currently selling at " + str(price_wanted) + " or more")
+        os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or more")
+        print(TickerSym + " is currently selling at " + str(price_wanted) + " or more")
 
 def timed_beat(sc):
     global total_cash_money_in_da_bank

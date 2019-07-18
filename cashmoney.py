@@ -85,8 +85,9 @@ def timed_beat(sc):
 
     if (total_cash_money_in_da_bank>0):
         print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
-        if (total_cash_money_in_da_bank>120):
-            os.system( "say THE MARKETS ARE BOOMING RIGHT NOW FAM! Broke 120 dollars today!")
+        booming_limit=150
+        if (total_cash_money_in_da_bank>booming_limit):
+            os.system( "say THE MARKETS ARE BOOMING RIGHT NOW FAM! Broke "+booming_limit+" dollars today!")
             webbrowser.open("https://www.myinstants.com/media/sounds/ka-ching.mp3")
 
     else:

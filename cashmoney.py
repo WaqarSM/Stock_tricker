@@ -49,6 +49,17 @@ def HitPrice(TickerSym, price_wanted, buysell):
         os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or more")
         print(TickerSym + " is currently selling at " + str(price_wanted) + " or more")
 
+def market_closed():
+    if ((time.strftime('%H:%M'))>= "16:00"):
+        os.system("say The Market is now closed.")
+        os.system("say Today You banked:" + str(total_cash_money_in_da_bank) +"Dollars. ")
+        os.system("say See you tomorrow")
+        print("say The Market is now closed.")
+        print("say Today You banked:" + str(total_cash_money_in_da_bank) +"Dollars. ")
+        print("say See you tomorrow")
+        exit(0)
+
+
 def timed_beat(sc):
     global total_cash_money_in_da_bank
     total_cash_money_in_da_bank=0
@@ -80,6 +91,7 @@ def timed_beat(sc):
 
     else:
         print(colored("😭 Banking: $ %f" % total_cash_money_in_da_bank,'red'))
+    market_closed()
     print("-----------------------------")
     s.enter(30, 1, timed_beat, (sc,))
 

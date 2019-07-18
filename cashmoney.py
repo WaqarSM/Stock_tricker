@@ -6,6 +6,8 @@ from bs4 import BeautifulSoup
 from termcolor import colored
 import sched, time
 import os
+import webbrowser
+
 #-------------------------------------------------------------------------------
 def CurrentValue(TickerSym, printval):
     try:
@@ -72,8 +74,9 @@ def timed_beat(sc):
 
     if (total_cash_money_in_da_bank>0):
         print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
-        if (total_cash_money_in_da_bank>100):
-            os.system( "say MARTKETS BOOMING RIGHT NOW HOMIE! Broke 100 dollars!")
+        if (total_cash_money_in_da_bank>120):
+            os.system( "say THE MARKETS ARE BOOMING RIGHT NOW FAM! Broke 120 dollars today!")
+            webbrowser.open("https://www.myinstants.com/media/sounds/ka-ching.mp3")
 
     else:
         print(colored("😭 Banking: $ %f" % total_cash_money_in_da_bank,'red'))

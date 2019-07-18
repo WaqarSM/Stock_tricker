@@ -35,12 +35,19 @@ def tickout(TickerSym,principal,numstock):
     else:
         print (colored("⬇ "+TickerSym+": $ "+str(current_net) , 'red'))
 
-def HitPrice(TickerSym, price_wanted):
+def HitPrice(TickerSym, price_wanted, buysell):
     if(CurrentValue(TickerSym, False)<=price_wanted):
         beep = lambda x: os.system("echo \$ '\a';sleep 0.05;" * x)
         beep(15)
-        os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or less")
-        print(TickerSym + " is currently selling at " + str(price_wanted) + " or less")
+        if (buysell=="buy"):
+            os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or less")
+            print(TickerSym + " is currently selling at " + str(price_wanted) + " or less")
+    else:
+        beep = lambda x: os.system("echo \$ '\a';sleep 0.05;" * x)
+        beep(15)
+        if (buysell=="sell"):
+            os.system( "say " + TickerSym + " is currently selling at " + str(price_wanted) + "or more")
+            print(TickerSym + " is currently selling at " + str(price_wanted) + " or more")
 
 def timed_beat(sc):
     global total_cash_money_in_da_bank
@@ -56,7 +63,7 @@ def timed_beat(sc):
     principal_GLDN=0.135 #DO NOT OWN YET
     numstock_GLDN=7600
     tickout("GLDN",principal_GLDN,numstock_GLDN)
-    HitPrice("GLDN",0.135) #Order in
+    HitPrice("GLDN",0.160,"sell") #Order in
 
     # $BU.TO
     principal_GLDN=1.09 #Saddly own.
@@ -66,6 +73,9 @@ def timed_beat(sc):
 
     if (total_cash_money_in_da_bank>0):
         print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
+        if (total_cash_money_in_da_bank>100):
+            os.system( "say MARTKETS BOOMING RIGHT NOW HOMIE! Broke 100 dollars!")
+
     else:
         print(colored("😭 Banking: $ %f" % total_cash_money_in_da_bank,'red'))
     print("-----------------------------")

@@ -80,14 +80,14 @@ def timed_beat(sc):
     principal_GLDN=1.09 #Saddly own.
     numstock_GLDN=100
     tickout("BU",principal_GLDN,numstock_GLDN)
-    HitPrice("BU",1.200,"sell") #Order in
+    HitPrice("BU",1.500,"sell") #Order in
 
 
     if (total_cash_money_in_da_bank>0):
         print(colored(("💰 Banking: $ %f" % total_cash_money_in_da_bank),'green'))
-        booming_limit=150
+        booming_limit=175
         if (total_cash_money_in_da_bank>booming_limit):
-            os.system( "say THE MARKETS ARE BOOMING RIGHT NOW FAM! Broke "+booming_limit+" dollars today!")
+            os.system( "say THE MARKETS ARE BOOMING RIGHT NOW FAM! Broke "+str(booming_limit)+" dollars today!")
             webbrowser.open("https://www.myinstants.com/media/sounds/ka-ching.mp3")
 
     else:
